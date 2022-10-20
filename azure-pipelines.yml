@@ -1,0 +1,12 @@
+trigger:
+- none
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Deploying test file!
+  displayName: 'Deploy Test'
+
+- script:  az deployment group create --resource-group 'rg2-mus' --template-file $(Build.ArtifactStagingDirectory)/muss11/scaf-azure-arm-templates/blob/master/VirtualNetwork/nsg-update-monitor-alert/azure-monitor/azuredeploy.json --parameters $(Build.ArtifactStagingDirectory)/https://github.com/muss11/scaf-azure-arm-templates/blob/master/VirtualNetwork/nsg-update-monitor-alert/azure-monitor/azuredeploy.parameters.json 
+  displayName: 'Deploy Test'
